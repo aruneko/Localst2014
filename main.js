@@ -87,10 +87,10 @@ window.onload = function(){
               break;
           }
         }
-      else {
+      } else {
         var rnd, tmp;
         for (var j = 2; j < 17; j+=2) {
-          var rnd, tmp;
+          //var rnd, tmp;
           do {
             rnd = Math.floor(Math.random() * 3);
             switch (rnd) {
@@ -191,34 +191,58 @@ window.onload = function(){
         this.on('enterframe', function() {
           switch (Math.floor(Math.random() * 4)) {
             case 0:
-              if (!map.hitTest(this.x + 8, this.y + 8) && !map.hitTest(this.x + 8, this.y + 23)) {
+              if (!map.hitTest(this.x + 7, this.y + 8)
+               && !map.hitTest(this.x + 7, this.y + 23)) {
                 this.tl.waitUntil(function() {
                   this.x -= 1;
-                  return (!map.hitTest(this.x + 23, this.y + 8) && !map.hitTest(this.x + 23, this.y + 23)) || ((!map.hitTest(this.x + 8, this.y + 7) && !map.hitTest(this.x + 23, this.y + 7)) || (!map.hitTest(this.x + 8, this.y + 24) && !map.hitTest(this.x + 23, this.y + 24)));
+                  return (!map.hitTest(this.x + 24, this.y + 8)
+                       && !map.hitTest(this.x + 24, this.y + 23))
+                     || ((!map.hitTest(this.x + 8, this.y + 7)
+                       && !map.hitTest(this.x + 23, this.y + 7))
+                     || (!map.hitTest(this.x + 8, this.y + 24)
+                      && !map.hitTest(this.x + 23, this.y + 24)));
                 });
               }
               break;
             case 1:
-              if (!map.hitTest(this.x + 23, this.y + 8) && !map.hitTest(this.x + 23, this.y + 23)) {
+              if (!map.hitTest(this.x + 24, this.y + 8)
+               && !map.hitTest(this.x + 24, this.y + 23)) {
                 this.tl.waitUntil(function() {
                   this.x += 1;
-                  return (!map.hitTest(this.x + 8, this.y + 8) && !map.hitTest(this.x + 8, this.y + 23)) || (!map.hitTest(this.x + 8, this.y + 7) && !map.hitTest(this.x + 23, this.y + 7)) || (!map.hitTest(this.x + 8, this.y + 24) && !map.hitTest(this.x + 23, this.y + 24));
+                  return (!map.hitTest(this.x + 7, this.y + 8)
+                       && !map.hitTest(this.x + 7, this.y + 23))
+                      || (!map.hitTest(this.x + 8, this.y + 7)
+                       && !map.hitTest(this.x + 23, this.y + 7))
+                      || (!map.hitTest(this.x + 8, this.y + 24)
+                       && !map.hitTest(this.x + 23, this.y + 24));
                 });
               }
               break;
             case 2:
-              if (!map.hitTest(this.x + 8, this.y + 7) && !map.hitTest(this.x + 23, this.y + 7)) {
+              if (!map.hitTest(this.x + 8, this.y + 7)
+               && !map.hitTest(this.x + 23, this.y + 7)) {
                 this.tl.waitUntil(function() {
                   this.y -= 1;
-                  return (!map.hitTest(this.x + 8, this.y + 8) && !map.hitTest(this.x + 8, this.y + 23)) || (!map.hitTest(this.x + 23, this.y + 8) && !map.hitTest(this.x + 23, this.y + 23)) || (!map.hitTest(this.x + 8, this.y + 24) && !map.hitTest(this.x + 23, this.y + 24));
+                  return (!map.hitTest(this.x + 7, this.y + 8)
+                       && !map.hitTest(this.x + 7, this.y + 23))
+                      || (!map.hitTest(this.x + 24, this.y + 8)
+                       && !map.hitTest(this.x + 24, this.y + 23))
+                      || (!map.hitTest(this.x + 8, this.y + 24)
+                       && !map.hitTest(this.x + 23, this.y + 24));
                 });
               }
               break;
             case 3:
-              if (!map.hitTest(this.x + 8, this.y + 24) && !map.hitTest(this.x + 23, this.y + 24)) {
+              if (!map.hitTest(this.x + 8, this.y + 24)
+               && !map.hitTest(this.x + 23, this.y + 24)) {
                 this.tl.waitUntil(function() {
                   this,y += 1;
-                  return (!map.hitTest(this.x + 8, this.y + 8) && !map.hitTest(this.x + 8, this.y + 23)) || (!map.hitTest(this.x + 23, this.y + 8) && !map.hitTest(this.x + 23, this.y + 23)) || (!map.hitTest(this.x + 8, this.y + 7) && !map.hitTest(this.x + 23, this.y + 7))
+                  return (!map.hitTest(this.x + 7, this.y + 8)
+                       && !map.hitTest(this.x + 7, this.y + 23))
+                      || (!map.hitTest(this.x + 24, this.y + 8)
+                       && !map.hitTest(this.x + 24, this.y + 23))
+                      || (!map.hitTest(this.x + 8, this.y + 7)
+                       && !map.hitTest(this.x + 23, this.y + 7))
                 });
               }
               break;
@@ -268,7 +292,7 @@ window.onload = function(){
     }
     for (var i = 0; i < 19; i++) {
       for (var j = 0; j < 19; j++) {
-        if (baseMap[i][j] == 5) {
+        if (colMap[i][j] != 1) {
           pointDot[i][j] = new PointDot(i * 16, j * 16);
         } else {
           pointDot[i][j] = null;
